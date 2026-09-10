@@ -186,6 +186,11 @@ Der Crawler meldet sich mit einem sprechenden User-Agent samt Kontaktadresse, ho
 sechs Dokumente gleichzeitig und läuft viermal täglich. Für eine Kohorte sind das rund 88
 Anfragen pro Tag.
 
+## Lizenz
+
+MIT, siehe [LICENSE](LICENSE). Die Vorlesungsdaten selbst gehören der HTW Berlin und fallen
+nicht darunter.
+
 ---
 
 Ohne Gewähr. Im Zweifel gilt das LSF.

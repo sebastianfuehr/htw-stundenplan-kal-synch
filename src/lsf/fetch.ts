@@ -5,7 +5,7 @@
  * and give up quickly rather than piling on when the server is struggling.
  */
 
-const PROJECT_URL = 'https://github.com/sfuehr/htw-stundenplan-kal-synch';
+const PROJECT_URL = 'https://github.com/sebastianfuehr/htw-stundenplan-kal-synch';
 
 /**
  * Identifies the crawler to the university, with a contact address for whoever runs *this*

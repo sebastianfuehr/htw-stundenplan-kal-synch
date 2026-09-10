@@ -72,12 +72,12 @@ describe('legal pages', () => {
 describe('userAgent', () => {
   it('carries the operator contact when configured', () => {
     expect(userAgent('kontakt@example.org')).toBe(
-      'HTW-Stundenplan-ICS/1.0 (+https://github.com/sfuehr/htw-stundenplan-kal-synch; kontakt@example.org)',
+      'HTW-Stundenplan-ICS/1.0 (+https://github.com/sebastianfuehr/htw-stundenplan-kal-synch; kontakt@example.org)',
     );
   });
 
   it('omits the contact rather than naming an unrelated person', () => {
-    expect(userAgent()).toBe('HTW-Stundenplan-ICS/1.0 (+https://github.com/sfuehr/htw-stundenplan-kal-synch)');
+    expect(userAgent()).toBe('HTW-Stundenplan-ICS/1.0 (+https://github.com/sebastianfuehr/htw-stundenplan-kal-synch)');
     expect(userAgent('  ')).not.toContain(';');
   });
 });
