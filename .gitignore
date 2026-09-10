@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+dist/
+*.log
+.dev.vars
+.playwright-mcp/
+worker-configuration.d.ts

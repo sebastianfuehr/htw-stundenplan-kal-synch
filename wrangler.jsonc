@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "htw-stundenplan",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-22",
+  // Off on purpose: a feed URL spells out Studiengang, semester, group and course
+  // selection, and Workers Logs would sample those URLs. Flip to true while debugging.
+  "observability": {
+    "enabled": false
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CAL",
+      "id": "7f331d533ede4ba4b2f4429997427c77"
+    }
+  ],
+  "triggers": {
+    // Four times a day, on an offset minute to stay out of the :00 stampede.
+    // The second entry refreshes the Studiengang catalogue weekly.
+    "crons": ["17 */6 * * *", "37 4 * * 1"]
+  },
+  // Self-referencing service binding: internal endpoints are invoked through this so each
+  // parsed document gets its own CPU budget. A plain fetch to our own hostname is refused by
+  // Cloudflare with error 1042.
+  "services": [{ "binding": "SELF", "service": "htw-stundenplan" }],
+  "vars": {
+    // The crawler calls itself through this origin, and calendar UIDs are anchored to it.
+    // Changing it after people have subscribed would duplicate every event in their calendar.
+    "PUBLIC_ORIGIN": "https://htw-stundenplan.s-fuehr.workers.dev"
+  },
+  // Personal tool: one public URL is enough, no need for per-version preview URLs as well.
+  "preview_urls": false,
+  "placement": { "mode": "smart" }
+}
